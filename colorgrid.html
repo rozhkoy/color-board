@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+         ::-webkit-scrollbar {
+            width: 0;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 100%;
+            max-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .block {
+            width: 10px;
+            height: 10px;
+            /* background: red; */
+            /* border-radius: 50%; */
+        }
+    </style>
+
+    <script>
+        function creatBlock() {
+
+
+            for (let i = 0; i < 17000; i++) {
+                let div = document.createElement('div');
+                div.className = "block";
+                document.body.append(div);
+            }
+            color();
+        }
+
+        function color() {
+
+
+            const colorText = Array.from(document.querySelectorAll(".block"));
+
+            let brem = 1;
+
+
+            for (let arr of colorText) {
+                arr.addEventListener("mouseenter", function() {
+
+                    switch (brem) {
+                        case 1:
+                            arr.style.background = "#fc5f45";
+                            break;
+
+                        case 2:
+                            arr.style.background = "#38c695";
+                            break;
+
+                        case 3:
+                            arr.style.background = "#feb960";
+                            break;
+
+                        case 4:
+                            arr.style.background = "#b27cf5";
+                            brem = 0;
+                            break;
+
+                    }
+
+                    setTimeout(function() {
+
+                            arr.style.background = "#0000"
+
+                        },
+                        500);
+                    brem++;
+
+                }, "false");
+
+            }
+        }
+        creatBlock()
+    </script>
+</body>
+
+</html>
